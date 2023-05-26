@@ -8,12 +8,12 @@ using namespace std;
 class player
 {
     private:
-       const char *name;
-       int maxHp;
-       int Hp;
-       int level;
-       int coinsAmount;
-       int force;
+       const char *m_name;
+       int m_maxHp;
+       int m_Hp;
+       int m_level;
+       int m_coinsAmount;
+       int m_force;
     public:
        player(const char *newName,int newHp,int newForce);
        void printInfo();
