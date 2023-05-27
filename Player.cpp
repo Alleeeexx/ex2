@@ -2,7 +2,7 @@
 #include "utilities.h"
 #include <iostream>
 
-player::player(const char *newName,int newHp,int newForce)
+Player::Player(const char *newName, int newHp, int newForce)
 {
     m_name = newName;
     m_coinsAmount = 0;
@@ -36,12 +36,12 @@ player::player(const char *newName,int newHp,int newForce)
     }
 }
 
-void player::printInfo()
+void Player::printInfo() const
 {
      printPlayerInfo(m_name,m_level,m_force,m_Hp,m_coinsAmount); 
 }
 
-void player::levelUp()
+void Player::levelUp()
 {
     if (m_level<10)
     {
@@ -49,17 +49,17 @@ void player::levelUp()
     }
 }
 
-int player::getLevel()
+int Player::getLevel() const
 {
     return m_level;
 }
 
-void player::buff(int num)
+void Player::buff(int num)
 {
     m_force+=num;
 }
 
-void player::heal(int num)
+void Player::heal(int num)
 {
     if (num>0)
     {
@@ -71,7 +71,7 @@ void player::heal(int num)
     }
 }
 
-void player::damage(int num)
+void Player::damage(int num)
 {
     if (num>0)
     {
@@ -83,7 +83,7 @@ void player::damage(int num)
     }
 }
 
-bool player::isKnockedOut()
+bool Player::isKnockedOut() const
 {
     if (m_Hp <= 0)
     {
@@ -92,12 +92,12 @@ bool player::isKnockedOut()
     return false;
 }
 
-void player::addCoins(int num)
+void Player::addCoins(int num)
 {
     m_coinsAmount += num;
 }
 
-bool player::pay(int num)
+bool Player::pay(int num)
 {
     if (m_coinsAmount - num >=0)
     {
@@ -107,22 +107,24 @@ bool player::pay(int num)
     return false;
 }
 
-int player::getAttackStrength()
+int Player::getAttackStrength() const
 {
     int num = m_force+m_level;
     return num;
 }
 
+/*
+
 int main()
 {
     const char* name = "pele";
-    player p(name,100,5);
+    Player p(name,100,5);
     p.printInfo();
     p.levelUp();
     p.levelUp();
-    printf("players current level is: %d\n",p.getLevel());
+    printf("Players current level is: %d\n",p.getLevel());
     p.buff(2);
-    printf("players current attack is: %d\n",p.getAttackStrength());
+    printf("Players current attack is: %d\n",p.getAttackStrength());
     p.damage(20);
     p.heal(10);
     p.addCoins(99);
@@ -138,3 +140,5 @@ int main()
     }
     return 0;
 }
+
+*/

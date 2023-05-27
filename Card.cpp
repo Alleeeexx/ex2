@@ -11,7 +11,7 @@ void Card::applyEncounter(Player& player) const
 {
     switch(m_effect)
     {
-        case Battle:
+        case CardType::Battle:
             if(player.getAttackStrength() >= m_stats.force)
             {
                 player.levelUp();
@@ -24,19 +24,19 @@ void Card::applyEncounter(Player& player) const
                 printBattleResult(false);
             }
             return;
-        case Buff:
+        case CardType::Buff:
             if(player.pay(m_stats.cost))
             {
-                player.heal(m_stats.buff);
+                player.buff(m_stats.buff);
             }
             return;
-        case Heal:
+        case CardType::Heal:
             if(player.pay(m_stats.cost))
             {
                 player.heal(m_stats.heal);
             }
             return;
-        case Treasure:
+        case CardType::Treasure:
             player.addCoins(m_stats.loot);
     }
 }
@@ -45,16 +45,16 @@ void Card::printInfo() const
 {
     switch(m_effect)
     {
-        case Battle:
-        printBattleCardInfo(*this);
+        case CardType::Battle:
+        printBattleCardInfo(m_stats);
         return;
-        case Buff:
-        printBuffCardInfo(*this);
+        case CardType::Buff:
+        printBuffCardInfo(m_stats);
         return;
-        case Heal:
-        printHealCardInfo(*this);
+        case CardType::Heal:
+        printHealCardInfo(m_stats);
         return;
-        case Treasure:
-        printTreasureCardInfo(*this);
+        case CardType::Treasure:
+        printTreasureCardInfo(m_stats);
     }
 }

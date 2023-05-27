@@ -5,7 +5,7 @@
 #include <string>
 using namespace std;
 
-class player
+class Player
 {
     private:
        const char *m_name;
@@ -15,17 +15,17 @@ class player
        int m_coinsAmount;
        int m_force;
     public:
-       player(const char *newName,int newHp,int newForce);
-       void printInfo();
+       Player(const char *newName, int newHp = 100, int newForce = 5);
+       void printInfo() const;
        void levelUp();
-       int getLevel();
+       int getLevel() const;
        void buff(int num);
        void heal(int num);
        void damage(int num);
-       bool isKnockedOut();
+       bool isKnockedOut() const;
        void addCoins(int num);
        bool pay(int num);
-       int getAttackStrength();
+       int getAttackStrength() const;
 };
 
 #endif
