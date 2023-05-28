@@ -5,10 +5,12 @@ Card::Card(CardType type, const CardStats& stats)
 {
     m_effect = type;
     m_stats = stats;
+    //cout << "Created card of type = " << static_cast<int>(m_effect) << endl;
 }
 
 void Card::applyEncounter(Player& player) const
 {
+    //cout << "Encounter of type = " << static_cast<int>(m_effect) << endl;
     switch(m_effect)
     {
         case CardType::Battle:
